@@ -7,18 +7,16 @@ def arithmetic_arranger(problems, results=False):
     # Problems shouldn't be more than 5
     if len(problems) > 5:
         return "Error: Too many problems."
-
     # Splitting the operators and operands with digits in them.
     for a, problem in enumerate(problems):
         print_first_line, operator, print_second_line = problem.split()
-
         # Only the given operators are allowed
         if operator not in ['+', '-']:
             return "Error: Operator must be '+' or '-'."
         # Must be digits only
-        if print_first_line.isdigit() == False:
+        if not print_first_line.isdigit():
             return "Error: Numbers must only contain digits."
-        elif print_second_line.isdigit() == False:
+        elif not print_second_line.isdigit():
             return "Error: Numbers must only contain digits."
         # Operands musts not be more than four.
         if len(print_first_line) > 4:
@@ -47,6 +45,7 @@ def arithmetic_arranger(problems, results=False):
     arranged_problems = line1 + "\n" + line2 + "\n" + line3
     if results:
         arranged_problems += "\n" + line4
-
     return arranged_problems
 
+
+print(arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "123 + 49"]))
